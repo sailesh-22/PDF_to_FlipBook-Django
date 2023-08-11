@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ file_name }}</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- Flipbook StyleSheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dflip.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.min.css' %}">
+</head>
+
+<body>
+    <div id="flipbook-container">
+        <h1> {{file_name}}</h1>
+        <div class="_df_book" webgl="true" backgroundcolor="lightblue" style="border-radius: 5px;"
+             source="{% static 'pdf_files/' %}{{ file_name }}" id="df_manual_book"></div>
+        </div> 
+        <button class="export-button center" >Export Flipbook</button>
+
+    <!-- jQuery and dFlip.js scripts -->
+    <script src="{% static 'js/libs/jquery.min.js' %}"></script>
+    <script src="{% static 'js/dflip.min.js' %}"></script>
+
+</body>
+</html>

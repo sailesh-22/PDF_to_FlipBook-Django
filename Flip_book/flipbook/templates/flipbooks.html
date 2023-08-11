@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Converted Flipbooks</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- Flipbook StyleSheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dflip.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.min.css' %}">
+
+</head>
+
+<body>
+ 
+    <div class="" >    
+        <!--Normal FLipbook-->
+        {% for file in pdf_files %}
+        <div  width="100%" style="padding-left:15%; padding-right:15%; margin-bottom:20px; ">
+         
+         <a href="{% url 'open_flipbook' file|urlencode %}">{{forloop.counter}}.{{ file}} </a>
+              {% comment %} <div class="_df_book"  webgl="true" backgroundcolor="lightblue"style="border-radius:5px;" source="{% static 'pdf_files/' %}{{ file }}" id="df_manual_book_{{ forloop.counter }}" ></div> {% endcomment %}
+         </div>
+        <br>   {% endfor %}
+ 
+     </div>
+       
+
+    <!-- jQuery  -->
+    <script src="{% static 'js/libs/jquery.min.js' %}"></script>
+    <script src="{% static 'js/dflip.min.js' %}"></script>
+
+    
+    
+</body>
+</html>

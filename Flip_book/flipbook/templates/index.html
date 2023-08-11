@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Flip book | converter</title>
+    {% load static %}
+
+     <!-- Flipbook StyleSheet -->
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <link rel="stylesheet" href="{% static 'css/dflip.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/themify-icons.min.css' %}">
+ 
+</head>
+<body>
+    
+    <div class="container">
+        <h1>PDF to Flipbook Converter</h1>
+        <form method="POST" id="upload-form" action="{% url 'pdf2flipbook' %}" enctype="multipart/form-data">
+        {% csrf_token %} 
+            <label for="images" class="drop-container" id="dropcontainer">
+                <span class="drop-title">Drop files here</span>
+                or
+                <input type="file" class="center" name="pdf_file" id="pdf_file" accept=".pdf" required>
+              </label>
+           
+            <button type="submit" class="upload-button center">Upload </button>
+        </form>
+        <a href="{% url 'flipbooks' %}">uploaded flipbooks</a>
+    </div>
+   
+    <script src="{% static 'js/libs/jquery.min.js' %}"></script>
+    <script src="{% static 'js/dflip.min.js' %}"></script>
+    <script>
+        const dropContainer = document.getElementById("dropcontainer")
+        const fileInput = document.getElementById("pdf_file")
+
+        dropContainer.addEventListener("dragover", (e) => {
+            // prevent default to allow drop
+            e.preventDefault()
+        }, false)
+
+        dropContainer.addEventListener("dragenter", () => {
+            dropContainer.classList.add("drag-active")
+        })
+
+        dropContainer.addEventListener("dragleave", () => {
+            dropContainer.classList.remove("drag-active")
+        })
+
+        dropContainer.addEventListener("drop", (e) => {
+            e.preventDefault()
+            dropContainer.classList.remove("drag-active")
+            fileInput.files = e.dataTransfer.files
+        })
+    </script>
+</body>
+</html>
