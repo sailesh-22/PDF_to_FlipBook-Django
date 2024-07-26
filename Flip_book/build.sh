@@ -1,4 +1,7 @@
 # Build the project
+echo "Installing pip..."
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3.9 get-pip.py
 echo "Building the project..."
 python3.9 -m pip install -r requirements.txt
 
