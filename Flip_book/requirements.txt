@@ -1,0 +1,5 @@
+Django>=3.2,<4.0
+djangorestframework
+psycopg2-binary  # for PostgreSQL database
+gunicorn  # for running the application on a production server
+whitenoise  # for serving static files in production
